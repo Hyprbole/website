@@ -38,3 +38,5 @@ function animate() {
 }
 
 animate();
+
+ window.onunload = function(){};
