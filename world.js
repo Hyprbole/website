@@ -1,4 +1,6 @@
 document.getElementById('block-e3dbe3f7b4e0400f8cc8d9b0528dc201').innerHTML = '<canvas class="zdog-canvas" width="240" height="240"></canvas>';
+window.onunload = function(){};
+
 
 let isSpinning = true;
 
@@ -39,4 +41,4 @@ function animate() {
 
 animate();
 
- window.onunload = function(){};
+
