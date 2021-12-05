@@ -3,39 +3,58 @@ document.getElementById('block-e3dbe3f7b4e0400f8cc8d9b0528dc201').innerHTML = '<
 
 let isSpinning = true;
 
-let illo = new Zdog.Illustration({
+// Made with Zdog
+
+let earth = new Zdog.Illustration({
   element: '.zdog-canvas',
   dragRotate: true,
   resize: true,
-  // stop spinning when drag starts
-  onDragStart: function() {
-    isSpinning = false;
-  },
+  zoom: 4,
 });
 
 // circle
-new Zdog.Ellipse({
-  addTo: illo,
+let sphere = new Zdog.Shape({
+  addTo: earth,
   diameter: 80,
-  translate: { z: 40 },
-  stroke: 20,
-  color: '#636',
+  stroke: 100,
+  color: '#5792FF',
 });
 
-// square
-new Zdog.Rect({
-  addTo: illo,
-  width: 80,
-  height: 80,
-  translate: { z: -40 },
-  stroke: 12,
-  color: '#E62',
+//link 01
+let link1 = new Zdog.Shape({
+  addTo: sphere,
+  path: [
+    { z:   0},
+    { z:  -60},
+  ],
+  translate: { z: -90},
+  color: '#D9D9D9',
+  stroke: 4,
+  fill: true,
+});
+
+new Zdog.Shape({
+  addTo: link1,
+  translate: { z: -70},
+  color: '#F5F5F5',
+  stroke: 20,
+  fill: true,
+});
+
+new Zdog.Shape({
+  addTo: sphere,
+  path: [
+    { z:   0},
+    { z:  60},
+  ],
+  translate: { z: 90},
+  color: '#D9D9D9',
+  stroke: 4,
   fill: true,
 });
 
 function animate() {
-  illo.rotate.y += isSpinning ? 0.03 : 0;
-  illo.updateRenderGraph();
+  earth.updateRenderGraph();
   requestAnimationFrame( animate );
 }
 
