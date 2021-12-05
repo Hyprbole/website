@@ -12,7 +12,7 @@ var scale = 6;
 var zoom = 1;
 var isMobile = false; //initiate as false
 const TAU = Zdog.TAU;
-var isSpinning = true;
+let isSpinning = true;
 
 //define all link endpoints
 var end1 = -40;
@@ -51,7 +51,9 @@ if (isMobile) {
     element: '.zdog-canvas',
     scale: scale,
     dragRotate: true,
+    rotate: {y: 40, x: 0},
     onDragStart: function() {
+        isSpinning = false;
         const d = new Date();
         timerStart = d.getTime();
     },
@@ -243,32 +245,45 @@ let link5 = new Zdog.Shape({
 
   //--------------start of globe surface ---------
 
-  // light green lands
-const land1 = new Zdog.Ellipse({
-    // path: [
-    //   { x: 0, y:  0, z:  0 },
-    //   { x: -2, y: 0, z: 5 },
-    // ],
-    // translate: { x: 17, y: 5, z: 4 },
-    color: "#6FCC50",
-    closed: false,
-    stroke: 20,
-    rotate: {z: 10, x: 200, y: 30},
-    diameter: 45,
-    quarters: 0.2,
-    addTo: half1,
-  });
-//   land1.copy({
-//     scale: { x: -1 },
-//     translate: { x: -17, y: 0, z: 4 },
-//   })
+//   // light green lands
+// const land1 = new Zdog.Ellipse({
+//     // path: [
+//     //   { x: 0, y:  0, z:  0 },
+//     //   { x: -2, y: 0, z: 5 },
+//     // ],
+//     // translate: { x: 17, y: 5, z: 4 },
+//     color: "#6FCC50",
+//     closed: false,
+//     stroke: 20,
+//     rotate: {z: 10, x: 200, y: 30},
+//     diameter: 45,
+//     quarters: 0.2,
+//     addTo: half1,
+//   });
+// //   land1.copy({
+// //     scale: { x: -1 },
+// //     translate: { x: -17, y: 0, z: 4 },
+// //   })
   
-//   const land2 = new Zdog.Shape({
+// //   const land2 = new Zdog.Shape({
+// //     path: [
+// //       { x: 0, y:  0, z:  0 },
+// //       { x: -10, y: 0, z: 4 },
+// //     ],
+// //     translate: { x: 13, y: -10, z: 10 },
+// //     color: "#6FCC50",
+// //     closed: false,
+// //     fill: true,
+// //     stroke: 7,
+// //     addTo: half1,
+// //   });
+  
+//   new Zdog.Shape({
 //     path: [
 //       { x: 0, y:  0, z:  0 },
-//       { x: -10, y: 0, z: 4 },
+//       { x: 5, y: 0, z: 4 },
 //     ],
-//     translate: { x: 13, y: -10, z: 10 },
+//     translate: { x: -13, y: -10, z: 10 },
 //     color: "#6FCC50",
 //     closed: false,
 //     fill: true,
@@ -276,52 +291,39 @@ const land1 = new Zdog.Ellipse({
 //     addTo: half1,
 //   });
   
-  new Zdog.Shape({
-    path: [
-      { x: 0, y:  0, z:  0 },
-      { x: 5, y: 0, z: 4 },
-    ],
-    translate: { x: -13, y: -10, z: 10 },
-    color: "#6FCC50",
-    closed: false,
-    fill: true,
-    stroke: 7,
-    addTo: half1,
-  });
+//   const land3 = new Zdog.Shape({
+//     path: [
+//       { x: 0, y:  0, z:  0 },
+//       { x: -2, y: 0, z: 3 },
+//     ],
+//     translate: { x: 13, y: 13, z: 7 },
+//     color: "#6FCC50",
+//     closed: false,
+//     fill: true,
+//     stroke: 4,
+//     addTo: half1,
+//   });
+//   land3.copy({
+//     scale: { x: -1 },
+//     translate: { x: -13, y: 13, z: 7 },
+//   })
   
-  const land3 = new Zdog.Shape({
-    path: [
-      { x: 0, y:  0, z:  0 },
-      { x: -2, y: 0, z: 3 },
-    ],
-    translate: { x: 13, y: 13, z: 7 },
-    color: "#6FCC50",
-    closed: false,
-    fill: true,
-    stroke: 4,
-    addTo: half1,
-  });
-  land3.copy({
-    scale: { x: -1 },
-    translate: { x: -13, y: 13, z: 7 },
-  })
-  
-  const land4 = new Zdog.Shape({
-    path: [
-      { x: 0, y:  0, z:  0 },
-      { x: -7, y: 0, z: 3 },
-    ],
-    translate: { x: 10, y: -3, z: 16 },
-    color: "#6FCC50",
-    closed: false,
-    fill: true,
-    stroke: 4,
-    addTo: half1,
-  });
-  land4.copy({
-    scale: { x: -1 },
-    translate: { x: -10, y: 3, z: 16 },
-  })
+//   const land4 = new Zdog.Shape({
+//     path: [
+//       { x: 0, y:  0, z:  0 },
+//       { x: -7, y: 0, z: 3 },
+//     ],
+//     translate: { x: 10, y: -3, z: 16 },
+//     color: "#6FCC50",
+//     closed: false,
+//     fill: true,
+//     stroke: 4,
+//     addTo: half1,
+//   });
+//   land4.copy({
+//     scale: { x: -1 },
+//     translate: { x: -10, y: 3, z: 16 },
+//   })
   
   // light clouds
   const cloud1 = new Zdog.Shape({
@@ -465,51 +467,51 @@ const land1 = new Zdog.Ellipse({
     addTo: half1,
   });
   
-  // dark green lands
-  const land5 = new Zdog.Shape({
-    path: [
-      { x: 0, y:  0, z: 0 },
-      { x: 2.5, y:  0, z: 2 },
-    ],
-    translate: { x: 7, y: 7, z: -16 },
-    color: "#489268",
-    fill: true,
-    stroke: 4,
-    addTo: half1,
-  });
-  land5.copy({
-    scale: { x: -1 },
-    translate: { x: -7, y: 12, z: -16 },
-  })
+//   // dark green lands
+//   const land5 = new Zdog.Shape({
+//     path: [
+//       { x: 0, y:  0, z: 0 },
+//       { x: 2.5, y:  0, z: 2 },
+//     ],
+//     translate: { x: 7, y: 7, z: -16 },
+//     color: "#489268",
+//     fill: true,
+//     stroke: 4,
+//     addTo: half1,
+//   });
+//   land5.copy({
+//     scale: { x: -1 },
+//     translate: { x: -7, y: 12, z: -16 },
+//   })
   
-  const land6 = new Zdog.Shape({
-    path: [
-      { x: 0, y:  0, z: 0 },
-      { x: 10, y:  0, z: 9 },
-    ],
-    translate: { x: 5, y: -2, z: -17 },
-    color: "#489268",
-    fill: true,
-    stroke: 8,
-    addTo: half1,
-  });
+//   const land6 = new Zdog.Shape({
+//     path: [
+//       { x: 0, y:  0, z: 0 },
+//       { x: 10, y:  0, z: 9 },
+//     ],
+//     translate: { x: 5, y: -2, z: -17 },
+//     color: "#489268",
+//     fill: true,
+//     stroke: 8,
+//     addTo: half1,
+//   });
   
-  const land7 = new Zdog.Shape({
-    path: [
-      { x: 0, y:  0, z: 0 },
-      { x: 2.5, y:  0, z: 5 },
-    ],
-    translate: { x: 13, y: -10, z: -10 },
-    color: "#489268",
-    fill: true,
-    stroke: 4,
-    addTo: half1,
-  });
-  land5.copy({
-    scale: { x: -1 },
-    translate: { x: -13, y: -10, z: -10 },
-    stroke: 5,
-  })
+//   const land7 = new Zdog.Shape({
+//     path: [
+//       { x: 0, y:  0, z: 0 },
+//       { x: 2.5, y:  0, z: 5 },
+//     ],
+//     translate: { x: 13, y: -10, z: -10 },
+//     color: "#489268",
+//     fill: true,
+//     stroke: 4,
+//     addTo: half1,
+//   });
+//   land5.copy({
+//     scale: { x: -1 },
+//     translate: { x: -13, y: -10, z: -10 },
+//     stroke: 5,
+//   })
   
 
 
@@ -519,6 +521,3 @@ function animate() {
 }
 
 animate();
-
-
-
