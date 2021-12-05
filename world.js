@@ -57,7 +57,8 @@ if (isMobile) {
         var difference = timerEnd - timerStart;
         console.log(difference);
         if (difference < 100) {
-            window.location.href = '/2.html';
+            //window.location.href = '/2.html';
+            window.location.href = '/projects';
         }
     },
     resize: true,
