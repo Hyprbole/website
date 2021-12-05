@@ -40,7 +40,9 @@ if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine
 
 if (isMobile) {
   //zoom = 1;
-  scale = 1;
+  
+  scale = 2;
+  pointSize = 10;
 }
 
 
