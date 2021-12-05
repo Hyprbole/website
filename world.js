@@ -7,6 +7,7 @@ var pointSize = 40;
 var pointColor = '#F5F5F5';
 var timerStart = 0;
 var timerEnd = 0;
+var scale = 6;
 
 var zoom = 1;
 var isMobile = false; //initiate as false
@@ -17,7 +18,7 @@ var isSpinning = true;
 var end1 = -40;
 var end2 = -60;
 var end3 = -30;
-var end4 = -160;
+var end4 = -44;
 var end5 = -40;
 var end6 = -133;
 var end7 = -100;
@@ -38,14 +39,15 @@ if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine
 }
 
 if (isMobile) {
-  zoom = 1
+  //zoom = 1;
+  scale = 1;
 }
 
 
 // create illustration and handle clicking
   let earth = new Zdog.Illustration({
     element: '.zdog-canvas',
-    scale: 4,
+    scale: scale,
     dragRotate: true,
     onDragStart: function() {
         const d = new Date();
@@ -107,7 +109,7 @@ let point1 = new Zdog.Shape({
 
 var eyeGroup = new Zdog.Group({
     addTo: point1,
-    scale: 0.5,
+    scale: 0.2,
   });
   // eye white first
   new Zdog.Ellipse({
@@ -159,7 +161,7 @@ let link2 = new Zdog.Shape({
   });
 
 
-  //create link2
+  //create link3
 let link3 = new Zdog.Shape({
     addTo: half1,
     path: [
@@ -173,7 +175,7 @@ let link3 = new Zdog.Shape({
     fill: true,
   });
   
-  //add point1 to link2
+  //add point3 to link3
   let point3 = new Zdog.Shape({
     addTo: link3,
     translate: { z: end3 - 5},
@@ -181,6 +183,56 @@ let link3 = new Zdog.Shape({
     stroke: pointSize,
     fill: true,
   });
+
+
+    //create link4
+let link4 = new Zdog.Shape({
+    addTo: half1,
+    path: [
+      { z:  linkStart},
+      { z:  end4},
+    ],
+    translate: { z: 0},
+    rotate: {x: TAU/1, y: TAU/3, z: TAU/2},
+    color: linkColor,
+    stroke: 1.5,
+    fill: true,
+  });
+  
+  //add point4 to link4
+  let point4 = new Zdog.Shape({
+    addTo: link4,
+    translate: { z: end4 - 5},
+    color: pointColor,
+    stroke: pointSize,
+    fill: true,
+  });
+
+
+      //create link5
+let link5 = new Zdog.Shape({
+    addTo: half1,
+    path: [
+      { z:  linkStart},
+      { z:  end5},
+    ],
+    translate: { z: 0},
+    rotate: {x: TAU/-2, y: TAU/2, z: TAU/2},
+    color: linkColor,
+    stroke: 1.5,
+    fill: true,
+  });
+  
+  //add point4 to link5
+  let point5 = new Zdog.Shape({
+    addTo: link5,
+    translate: { z: end5 - 5},
+    color: pointColor,
+    stroke: pointSize,
+    fill: true,
+  });
+  
+  
   
 
   
@@ -190,35 +242,37 @@ let link3 = new Zdog.Shape({
   //--------------start of globe surface ---------
 
   // light green lands
-const land1 = new Zdog.Shape({
-    path: [
-      { x: 0, y:  0, z:  0 },
-      { x: -2, y: 0, z: 5 },
-    ],
-    translate: { x: 17, y: 5, z: 4 },
+const land1 = new Zdog.Ellipse({
+    // path: [
+    //   { x: 0, y:  0, z:  0 },
+    //   { x: -2, y: 0, z: 5 },
+    // ],
+    // translate: { x: 17, y: 5, z: 4 },
     color: "#6FCC50",
     closed: false,
-    fill: true,
-    stroke: 7,
+    stroke: 20,
+    rotate: {z: 10, x: 200, y: 30},
+    diameter: 45,
+    quarters: 0.2,
     addTo: half1,
   });
-  land1.copy({
-    scale: { x: -1 },
-    translate: { x: -17, y: 0, z: 4 },
-  })
+//   land1.copy({
+//     scale: { x: -1 },
+//     translate: { x: -17, y: 0, z: 4 },
+//   })
   
-  const land2 = new Zdog.Shape({
-    path: [
-      { x: 0, y:  0, z:  0 },
-      { x: -10, y: 0, z: 4 },
-    ],
-    translate: { x: 13, y: -10, z: 10 },
-    color: "#6FCC50",
-    closed: false,
-    fill: true,
-    stroke: 7,
-    addTo: half1,
-  });
+//   const land2 = new Zdog.Shape({
+//     path: [
+//       { x: 0, y:  0, z:  0 },
+//       { x: -10, y: 0, z: 4 },
+//     ],
+//     translate: { x: 13, y: -10, z: 10 },
+//     color: "#6FCC50",
+//     closed: false,
+//     fill: true,
+//     stroke: 7,
+//     addTo: half1,
+//   });
   
   new Zdog.Shape({
     path: [
