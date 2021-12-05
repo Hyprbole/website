@@ -2,17 +2,17 @@ document.getElementById('block-e3dbe3f7b4e0400f8cc8d9b0528dc201').innerHTML = '<
 
 
 let isSpinning = true;
+var linkPoint = -60;
 
-// Made with Zdog
 
-var linkPoint = -60
+ let earth = new Zdog.Illustration({
+    element: '.zdog-canvas',
+    dragRotate: true,
+    resize: true,
+    zoom: 1,
+  }); 
 
-let earth = new Zdog.Illustration({
-  element: '.zdog-canvas',
-  dragRotate: true,
-  resize: true,
-  zoom: 2,
-});
+
 
 // circle
 let sphere = new Zdog.Shape({
@@ -35,15 +35,6 @@ let link1 = new Zdog.Shape({
   stroke: 2,
   fill: true,
 });
-
-new Zdog.Shape({
-  addTo: link1,
-  translate: { z: -120},
-  color: '#F5F5F5',
-  stroke: 20,
-  fill: true,
-});
-
 
 let link2 = new Zdog.Shape({
   addTo: sphere,
@@ -81,6 +72,59 @@ let link4 = new Zdog.Shape({
   rotate: {x: 10, y: -200, z: -10},
   color: '#D9D9D9',
   stroke: 2,
+  fill: true,
+});
+
+let link5 = new Zdog.Shape({
+  addTo: sphere,
+  path: [
+    { z:   linkPoint},
+    { z:  -90},
+  ],
+  translate: { z: 0},
+  rotate: {x: -96, y: 300, z: -250},
+  color: '#D9D9D9',
+  stroke: 2,
+  fill: true,
+});
+
+new Zdog.Shape({
+  addTo: link1,
+  translate: { z: -120},
+  color: '#F5F5F5',
+  stroke: 20,
+  fill: true,
+});
+
+new Zdog.Shape({
+  addTo: link2,
+  translate: { z: -120},
+  color: '#F5F5F5',
+  stroke: 20,
+  fill: true,
+});
+
+new Zdog.Shape({
+  addTo: link3,
+  translate: { z: -120},
+  color: '#F5F5F5',
+  stroke: 20,
+  fill: true,
+});
+
+new Zdog.Shape({
+  addTo: link4,
+  translate: { z: -120},
+  color: '#F5F5F5',
+  stroke: 20,
+  fill: true,
+});
+
+new Zdog.Shape({
+  addTo: link5,
+  translate: { z: -120},
+  color: '#F5F5F5',
+  stroke: 20,
   fill: true,
 });
 
