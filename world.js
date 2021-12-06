@@ -526,6 +526,7 @@ let link5 = new Zdog.Shape({
 
 function animate() {
     earth.rotate.y += isSpinning ? 0.03 : 0;
+    earth.rotate.x += isSpinning ? -0.001 : 0;
     earth.updateRenderGraph();
     requestAnimationFrame( animate );
   }
