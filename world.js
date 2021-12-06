@@ -24,7 +24,7 @@ var timerEnd = 0;
 
 //zzzdog
 const TAU = Zdog.TAU;
-let isSpinning = false;
+let isSpinning = true;
 
 
 //define all link endpoint variables
