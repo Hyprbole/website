@@ -106,7 +106,7 @@ if (isMobile) {
         console.log(difference);
         if (difference < 100) {
             //window.location.href = '/2.html';
-            window.location.href = '/projects';
+            window.location.href = '/philosophy';
         }
     },
     resize: true,
