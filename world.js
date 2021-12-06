@@ -63,28 +63,28 @@ if (isMobile) {
   strokeSmall = 4;
 }
 
-let description = new Zdog.Illustration({
-    element: '.zdog-canvas',
-    translate: {x: 40, y: 640},
+// let description = new Zdog.Illustration({
+//     element: '.zdog-canvas',
+//     translate: {x: 40, y: 640},
 
-  });
+//   });
 
-description.setSize(1,1)
+// description.setSize(1,1)
 
 
-  let myFont = new Zdog.Font({
-    src: './inter.tff'
-  });
+//   let myFont = new Zdog.Font({
+//     src: './inter.tff'
+//   });
 
-  new Zdog.Text({
-    addTo: description,
-    font: myFont,
-    value: 'Tap to read about reliable design for an \ninterlinked but personal world',
-    fontSize: 30,
-    color: pointColor,
-    textAlign: 'left',
-    textBaseline: 'bottom',
-  });
+//   new Zdog.Text({
+//     addTo: description,
+//     font: myFont,
+//     value: 'Tap to read about reliable design for an \ninterlinked but personal world',
+//     fontSize: 30,
+//     color: pointColor,
+//     textAlign: 'left',
+//     textBaseline: 'bottom',
+//   });
   
 
 
@@ -555,7 +555,7 @@ function animate() {
     earth.rotate.y += isSpinning ? 0.03 : 0;
     earth.rotate.x += isSpinning ? -0.001 : 0;
     earth.updateRenderGraph();
-    description.updateRenderGraph();
+    //description.updateRenderGraph();
     requestAnimationFrame( animate );
   }
 
