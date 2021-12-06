@@ -1,4 +1,7 @@
 document.getElementById('block-e3dbe3f7b4e0400f8cc8d9b0528dc201').innerHTML = '<canvas class="zdog-canvas" width="240" height="240"></canvas>';
+//init zfront
+Zfont.init(Zdog);
+
 
 //initiate all variables
     //general
@@ -59,6 +62,30 @@ if (isMobile) {
   strokeBig = 10;
   strokeSmall = 4;
 }
+
+let description = new Zdog.Illustration({
+    element: '.zdog-canvas',
+    translate: {x: 40, y: 640},
+
+  });
+
+description.setSize(1,1)
+
+
+  let myFont = new Zdog.Font({
+    src: './inter.tff'
+  });
+
+  new Zdog.Text({
+    addTo: description,
+    font: myFont,
+    value: 'Tap to read about reliable design for an \ninterlinked but personal world',
+    fontSize: 30,
+    color: pointColor,
+    textAlign: 'left',
+    textBaseline: 'bottom',
+  });
+  
 
 
 // create illustration and handle clicking
@@ -528,6 +555,7 @@ function animate() {
     earth.rotate.y += isSpinning ? 0.03 : 0;
     earth.rotate.x += isSpinning ? -0.001 : 0;
     earth.updateRenderGraph();
+    description.updateRenderGraph();
     requestAnimationFrame( animate );
   }
 
