@@ -1,20 +1,33 @@
 document.getElementById('block-e3dbe3f7b4e0400f8cc8d9b0528dc201').innerHTML = '<canvas class="zdog-canvas" width="240" height="240"></canvas>';
 
 //initiate all variables
-var linkStart = -25;
+    //general
+    var scale = 6;
+    var zoom = 1;
+    var isMobile = false; //initiate as false
+    //links
+var linkStart = -21;
 var linkColor = '#D9D9D9';
+var linkStroke = 1.5;
 var pointSize = 40;
-var pointColor = '#F5F5F5';
+var pointColor = 'hsla(0, 0%, 94%, 0.6)';
+
+
+    //clouds
+var strokeBig = 20
+var strokeSmall = 9
+
+    //clicking
 var timerStart = 0;
 var timerEnd = 0;
-var scale = 6;
 
-var zoom = 1;
-var isMobile = false; //initiate as false
+
+//zzzdog
 const TAU = Zdog.TAU;
-let isSpinning = true;
+let isSpinning = false;
 
-//define all link endpoints
+
+//define all link endpoint variables
 var end1 = -40;
 var end2 = -60;
 var end3 = -30;
@@ -43,6 +56,8 @@ if (isMobile) {
   
   scale = 2;
   pointSize = 10;
+  strokeBig = 10;
+  strokeSmall = 4;
 }
 
 
@@ -96,7 +111,7 @@ let link1 = new Zdog.Shape({
   translate: { z: 0},
   rotate: {x: 20, y: 200,z:-200},
   color: linkColor,
-  stroke: 1.5,
+  stroke: linkStroke,
   fill: true,
 });
 
@@ -151,11 +166,11 @@ let link2 = new Zdog.Shape({
     translate: { z: 0},
     rotate: {x: 149, y: 200,z:-10},
     color: linkColor,
-    stroke: 1.5,
+    stroke: linkStroke,
     fill: true,
   });
   
-  //add point1 to link2
+  //add point2 to link2
   let point2 = new Zdog.Shape({
     addTo: link2,
     translate: { z: end2 - 5},
@@ -175,7 +190,7 @@ let link3 = new Zdog.Shape({
     translate: { z: 0},
     rotate: {x: TAU/2, y: TAU/1,z: TAU/4},
     color: linkColor,
-    stroke: 1.5,
+    stroke: linkStroke,
     fill: true,
   });
   
@@ -199,9 +214,11 @@ let link4 = new Zdog.Shape({
     translate: { z: 0},
     rotate: {x: TAU/1, y: TAU/3, z: TAU/2},
     color: linkColor,
-    stroke: 1.5,
+    stroke: linkStroke,
     fill: true,
   });
+
+
   
   //add point4 to link4
   let point4 = new Zdog.Shape({
@@ -211,6 +228,46 @@ let link4 = new Zdog.Shape({
     stroke: pointSize,
     fill: true,
   });
+
+// //create link4.1
+// let link4_1 = new Zdog.Shape({
+//     addTo: point4,
+//     path: [
+//       { z:  0},
+//       {x: 10, y: -10, z: -30 },
+//     ],
+//     translate: { z: 0},
+//     rotate: {x: TAU/1, y: TAU/3, z: TAU/2},
+//     color: linkColor,
+//     stroke: linkStroke,
+//     fill: true,
+//   });
+
+// //create link4.1
+let link4_1 = new Zdog.Shape({
+    addTo: point4,
+    path: [
+      { x: 2, y: 3, z: 0 },   // start
+      { arc: [
+        { x:  10, y: 15 }, // corner
+        {x: 30, y: 12, z: 7 }, // end point
+      ]},
+    ],
+    closed: false,
+    stroke: 5,
+    color: linkColor,
+  });
+
+
+//add point4.1 to link4.1
+    let point4_1 = new Zdog.Shape({
+        addTo: link4_1,
+        translate: {x: 34, y: 12, z: 8  },
+        color: pointColor,
+        stroke: pointSize,
+        fill: true,
+      });
+
 
 
       //create link5
@@ -223,11 +280,14 @@ let link5 = new Zdog.Shape({
     translate: { z: 0},
     rotate: {x: TAU/-2, y: TAU/2, z: TAU/2},
     color: linkColor,
-    stroke: 1.5,
+    stroke: linkStroke,
     fill: true,
   });
+
+
+ 
   
-  //add point4 to link5
+  //add point5 to link5
   let point5 = new Zdog.Shape({
     addTo: link5,
     translate: { z: end5 - 5},
@@ -235,11 +295,6 @@ let link5 = new Zdog.Shape({
     stroke: pointSize,
     fill: true,
   });
-  
-  
-  
-
-  
 
 
 
@@ -335,7 +390,7 @@ let link5 = new Zdog.Shape({
     color: "#fff",
     closed: false,
     fill: true,
-    stroke: 5,
+    stroke: strokeSmall,
     addTo: half1,
   });
   
@@ -348,7 +403,7 @@ let link5 = new Zdog.Shape({
     color: "#fff",
     closed: false,
     fill: true,
-    stroke: 5,
+    stroke:  strokeSmall,
     addTo: half1,
   });
   
@@ -361,7 +416,7 @@ let link5 = new Zdog.Shape({
     color: "#fff",
     closed: false,
     fill: true,
-    stroke: 4,
+    stroke: strokeBig,
     addTo: half1,
   });
   cloud2.copy({
@@ -378,7 +433,7 @@ let link5 = new Zdog.Shape({
     color: "#fff",
     closed: false,
     fill: true,
-    stroke: 2,
+    stroke: strokeBig,
     addTo: half1,
   });
   cloud3.copy({
@@ -395,7 +450,7 @@ let link5 = new Zdog.Shape({
     color: "#fff",
     closed: false,
     fill: true,
-    stroke: 3,
+    stroke: strokeBig,
     addTo: half1,
   });
   cloud4.copy({
@@ -413,7 +468,7 @@ let link5 = new Zdog.Shape({
     color: "#A6B3DA",
     closed: false,
     fill: true,
-    stroke: 3,
+    stroke: strokeSmall,
     addTo: half1,
   });
   cloud5.copy({
@@ -430,7 +485,7 @@ let link5 = new Zdog.Shape({
     color: "#A6B3DA",
     closed: false,
     fill: true,
-    stroke: 6,
+    stroke: strokeBig,
     addTo: half1,
   });
   cloud6.copy({
@@ -447,7 +502,7 @@ let link5 = new Zdog.Shape({
     color: "#A6B3DA",
     closed: false,
     fill: true,
-    stroke: 3,
+    stroke: strokeSmall,
     addTo: half1,
   });
   cloud7.copy({
@@ -463,55 +518,9 @@ let link5 = new Zdog.Shape({
     translate: { x: -5, y: -4, z: -18 },
     color: "#A6B3DA",
     fill: true,
-    stroke: 8,
+    stroke: strokeBig,
     addTo: half1,
   });
-  
-//   // dark green lands
-//   const land5 = new Zdog.Shape({
-//     path: [
-//       { x: 0, y:  0, z: 0 },
-//       { x: 2.5, y:  0, z: 2 },
-//     ],
-//     translate: { x: 7, y: 7, z: -16 },
-//     color: "#489268",
-//     fill: true,
-//     stroke: 4,
-//     addTo: half1,
-//   });
-//   land5.copy({
-//     scale: { x: -1 },
-//     translate: { x: -7, y: 12, z: -16 },
-//   })
-  
-//   const land6 = new Zdog.Shape({
-//     path: [
-//       { x: 0, y:  0, z: 0 },
-//       { x: 10, y:  0, z: 9 },
-//     ],
-//     translate: { x: 5, y: -2, z: -17 },
-//     color: "#489268",
-//     fill: true,
-//     stroke: 8,
-//     addTo: half1,
-//   });
-  
-//   const land7 = new Zdog.Shape({
-//     path: [
-//       { x: 0, y:  0, z: 0 },
-//       { x: 2.5, y:  0, z: 5 },
-//     ],
-//     translate: { x: 13, y: -10, z: -10 },
-//     color: "#489268",
-//     fill: true,
-//     stroke: 4,
-//     addTo: half1,
-//   });
-//   land5.copy({
-//     scale: { x: -1 },
-//     translate: { x: -13, y: -10, z: -10 },
-//     stroke: 5,
-//   })
   
 
 
