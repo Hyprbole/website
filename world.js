@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
 document.getElementById('block-e3dbe3f7b4e0400f8cc8d9b0528dc201').innerHTML = '<canvas class="zdog-canvas" width="240" height="240"></canvas>';
 //init zfront
-Zfont.init(Zdog);
+//Zfont.init(Zdog);
 
 
 //initiate all variables
